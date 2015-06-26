@@ -9,10 +9,13 @@ app
       controller: "MainCtrl",
       templateUrl: "main.html"
     })
+    .when("/welcome", {
+      controller: "WelcomeCtrl",
+      templateUrl: "welcome.html"
+    })
     .otherwise({
       redirectTo: "/"
     });
 })
 .controller("MainCtrl", function($scope) {
-  console.log("Hello world and stuff");
 });
