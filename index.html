@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="lyve">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,13 +16,15 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-6">
-        Hello world
+        <ng-view></ng-view>
       </div>
     </div>
   </div>
 
 
+  <script src="/bower_components/firebase/firebase.js"></script>
   <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/angularfire/dist/angularfire.js"></script>
   <script src="/bower_components/angular-route/angular-route.js"></script>
   <script src="main.js"></script>
   </body>
