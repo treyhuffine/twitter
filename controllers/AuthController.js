@@ -1,5 +1,5 @@
 app.controller("AuthCtrl", function($scope, $rootScope, $location, UserAuth) {
-  if ($rootScope.authData) {
+  if ($rootScope.userToken) {
     $location.path("/");
   }
   var tempLogin;
@@ -9,8 +9,8 @@ app.controller("AuthCtrl", function($scope, $rootScope, $location, UserAuth) {
     UserAuth.register(tempLogin);
   };
   $scope.loginUser = function() {
-    tempLogin = $scope.currentUser;
-    $scope.currentUser = {};
+    tempLogin = $scope.returningUser;
+    $scope.returningUser = {};
     UserAuth.login(tempLogin);
   };
 });
