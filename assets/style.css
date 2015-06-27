@@ -23,3 +23,9 @@ body {
 body, html{
   background-color: rgb(74, 110, 158);
 }
+.navbar-header {
+  margin-left: 120px;
+}
+.navbar-nav {
+  margin-right: 110px;
+}

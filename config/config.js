@@ -2,8 +2,8 @@ app.config(function($routeProvider) {
   console.log("config");
   $routeProvider
     .when("/", {
-      controller: "WelcomeCtrl",
-      templateUrl: "views/welcome.html"
+      controller: "ProfileCtrl",
+      templateUrl: "views/profile.html"
     })
     .when("/login", {
       controller: "AuthCtrl",
