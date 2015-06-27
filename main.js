@@ -54,6 +54,9 @@ app
       email: user.email,
       password: user.password
     })
+    // .then(function() {
+    //   UserAuth.setUser();
+    // })
     .then(function() {
       $location.path("/welcome");
     })
@@ -65,35 +68,39 @@ app
     $rootScope.afAuth.$unauth();
     $location.path("/");
   };
+  UserAuth.setUser = function() {
+    $rootScope.afAuth.$onAuth(function(authData) {
+      if (authData) {
+        console.log(authData);
+        $rootScope.activeUser = authData;
+        var userRef = $rootScope.fbRef.child("users").child($rootScope.activeUser.uid);
+        var userFBObj = $firebaseObject(userRef);
+        userFBObj.$bindTo($rootScope, "currentUser");
+      }
+    });
+  }
 
   return UserAuth;
 })
-.controller("LoggedInUser", function($rootScope, $firebaseObject) {
-  $rootScope.afAuth.$onAuth(function(authData) {
-    if (authData) {
-      console.log(authData);
-      $rootScope.activeUser = authData;
-      var userRef = $rootScope.fbRef.child("users").child($rootScope.activeUser.uid);
-      var userFBObj = $firebaseObject(userRef);
-      userFBObj.$bindTo($rootScope, "currentUser");
-    }
-  });
+.controller("LoggedInUser", function($rootScope, $firebaseObject, UserAuth) {
+  UserAuth.setUser();
 })
 .controller("MainCtrl", function($scope, $rootScope, $location, UserAuth) {
   if ($rootScope.authData) {
     $location.path("/welcome");
   }
+  var tempLogin;
   $scope.registerUser = function() {
-    UserAuth.register($scope.newUser);
+    tempLogin = $scope.newUser;
+    $scope.newUser = {};
+    UserAuth.register(tempLogin);
   };
   $scope.loginUser = function() {
-    UserAuth.login($scope.currentUser);
+    tempLogin = $scope.currentUser;
+    $scope.currentUser = {};
+    UserAuth.login(tempLogin);
   };
 })
-.controller("WelcomeCtrl", function($rootScope, $scope, UserAuth, $location) {
-  if ($rootScope.currentUser) {
-    $scope.logout = UserAuth.logout;
-  } else {
-    $location.path("/")
-  }
+.controller("WelcomeCtrl", function($rootScope, $scope, $timeout,UserAuth, $location) {
+  $scope.logout = UserAuth.logout;
 });
