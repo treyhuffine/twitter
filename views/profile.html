@@ -5,8 +5,8 @@
       {{currentUser.username}}
     </div>
     <div class="tweet-container">
-      <form class="new-post">
-        <textarea class="post-text" ng-model="postText"></textarea>
+      <form class="new-post" ng-submit="submitPost()">
+        <textarea class="post-text" ng-model="postText" required></textarea>
         <br>
         <button class="btn btn-primary" name="go-lyve">Go Lyve</button>
       </form>

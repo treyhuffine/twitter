@@ -54,7 +54,7 @@ app.factory("UserAuth", function($rootScope, $location, $firebaseObject) {
         userFBObj.$bindTo($rootScope, "currentUser");
       }
     });
-  }
+  };
 
   return UserAuth;
-})
+});
