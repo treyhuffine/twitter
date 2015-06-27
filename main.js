@@ -63,7 +63,9 @@ app
   };
   UserAuth.logout = function() {
     $rootScope.afAuth.$unauth();
+    $location.path("/");
   };
+
   return UserAuth;
 })
 .controller("LoggedInUser", function($rootScope, $firebaseObject) {
