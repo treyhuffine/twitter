@@ -2,15 +2,19 @@
   <div class="auth-container">
     <div class="col-sm-offset-1 col-sm-5 register-form">
       <h2>Signup</h2>
-      <form>
-        <input type="text" name="fullname" placeholder="Full name"
-               class="form-control register-input" required>
+      <form ng-submit="registerUser()">
+        <input type="text" name="username" placeholder="Username"
+               class="form-control register-input"
+               ng-model="newUser.username" required>
         <input type="email" name="email" placeholder="Email"
-               class="form-control register-input" required>
+               class="form-control register-input"
+               ng-model="newUser.email"required>
         <input type="text" name="fullname" placeholder="Full name"
-               class="form-control register-input" required>
+               class="form-control register-input"
+               ng-model="newUser.fullName" required>
         <input type="password" name="password" placeholder="Password"
-               class="form-control register-input" required>
+               class="form-control register-input"
+               ng-model="newUser.password" required>
         <button name="submit"
         class="btn btn-success btn-sm btn-block btn-register">
           Register
@@ -20,11 +24,13 @@
     <div class="col-sm-offset-1 col-sm-4">
       <h2>Already a member?</h2>
       <h3>Login here</h3>
-      <form>
+      <form ng-submit="loginUser()">
         <input type="email" name="email" placeholder="Email"
-               class="form-control register-input" required>
+               class="form-control register-input"
+               ng-model="currentUser.email" required>
         <input type="password" name="password" placeholder="Password"
-               class="form-control register-input" required>
+               class="form-control register-input"
+               ng-model="currentUser.password" required>
         <button class="btn btn-primary btn-sm btn-block btn-login">
           Login
         </button>
