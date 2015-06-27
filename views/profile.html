@@ -1,4 +1,17 @@
-WELCOOOME!!!!
-
-<br>
-{{currentUser}}
+<div class="row">
+  <aside class="col-sm-offset-1 col-sm-3 user-container">
+    <div class="user-info">
+      {{currentUser.username}}
+    </div>
+    <div class="tweet-container">
+      <form class="new-post">
+        <textarea class="post-text" ng-model="postText"></textarea>
+        <br>
+        <button class="btn btn-primary" name="go-lyve">Go Lyve</button>
+      </form>
+    </div>
+  </aside>
+  <div class="col-sm-offset-1 col-sm-6">
+    TWEET STREAM
+  </div>
+</div>
