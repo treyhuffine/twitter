@@ -34,11 +34,8 @@ app
       email: user.email,
       password: user.password
     })
-    // .then(function() {
-    //   UserAuth.setUser();
-    // })
     .then(function() {
-      $location.path("/welcome");
+      $location.path("/");
     })
     .catch(function(error) {
       alert(error);
@@ -46,7 +43,7 @@ app
   };
   UserAuth.logout = function() {
     $rootScope.afAuth.$unauth();
-    $location.path("/");
+    $location.path("/login");
   };
   UserAuth.setUser = function() {
     $rootScope.afAuth.$onAuth(function(authData) {
@@ -67,7 +64,7 @@ app
 })
 .controller("AuthCtrl", function($scope, $rootScope, $location, UserAuth) {
   if ($rootScope.authData) {
-    $location.path("/welcome");
+    $location.path("/");
   }
   var tempLogin;
   $scope.registerUser = function() {

@@ -2,14 +2,14 @@ app.config(function($routeProvider) {
   console.log("config");
   $routeProvider
     .when("/", {
-      controller: "AuthCtrl",
-      templateUrl: "/views/auth.html"
-    })
-    .when("/welcome", {
       controller: "WelcomeCtrl",
-      templateUrl: "welcome.html"
+      templateUrl: "views/welcome.html"
+    })
+    .when("/login", {
+      controller: "AuthCtrl",
+      templateUrl: "views/auth.html"
     })
     .otherwise({
-      redirectTo: "/"
+      redirectTo: "/login"
     });
 });
