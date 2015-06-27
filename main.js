@@ -1,5 +1,3 @@
-'use strict';
-
 var app = angular.module("lyve", ["ngRoute", "firebase"]);
 
 app
@@ -22,12 +20,11 @@ app
       redirectTo: "/"
     });
 })
-.factory("Auth", function($rootScope, $location) {
-  function Auth(){
+.factory("UserAuth", function($rootScope, $location, $firebaseObject) {
+  function UserAuth(){
   }
 
-  Auth.register = function(user) {
-    console.log(user);
+  UserAuth.register = function(user) {
     return $rootScope.afAuth.$createUser({
       email: user.email,
       password: user.password
@@ -52,43 +49,54 @@ app
       alert(error);
     });
   };
-  Auth.login = function(user) {
+  UserAuth.login = function(user) {
     $rootScope.afAuth.$authWithPassword({
       email: user.email,
       password: user.password
+    })
+    .then(function() {
+      $location.path("/welcome");
     })
     .catch(function(error) {
       alert(error);
     });
   };
-  Auth.monitorAuth = function() {
-    $rootScope.afAuth.$onAuth(function(authData) {
-      if (authData) {
-        $rootScope.authData = authData;
-        $rootScope.fbRef.child(authData.uid).once("value", function(snapshot) {
-          $rootScope.currentUser = snapshot.val();
-        });
-        $location.path("/welcome");
-      }
-    });
-  };
-  Auth.logout = function() {
+  UserAuth.logout = function() {
     $rootScope.afAuth.$unauth();
   };
-  return Auth;
+  // Auth.currnetUser = {};
+  return UserAuth;
 })
-.controller("MainCtrl", function($scope, $rootScope, $location, Auth) {
+.controller("LoggedInUser", function($rootScope, $firebaseObject) {
+  $rootScope.afAuth.$onAuth(function(authData) {
+    if (authData) {
+      console.log(authData);
+      $rootScope.activeUser = authData;
+      $rootScope.fbRef.child("users").child($rootScope.activeUser.uid).once("value", function(snapshot) {
+        $rootScope.fbUser = snapshot.val();
+        console.log($rootScope.fbUser);
+      });
+      $rootScope.afUser = $firebaseObject($rootScope.fbRef.child("users").child($rootScope.activeUser.uid));
+      console.log($rootScope.afUser);
+    }
+  });
+})
+.controller("MainCtrl", function($scope, $rootScope, $location, UserAuth) {
   if ($rootScope.authData) {
     $location.path("/welcome");
   }
-  Auth.monitorAuth();
   $scope.registerUser = function() {
-    Auth.register($scope.newUser);
+    UserAuth.register($scope.newUser);
   };
   $scope.loginUser = function() {
-    Auth.login($scope.currentUser);
+    UserAuth.login($scope.currentUser);
   };
 })
-.controller("WelcomeCtrl", function($scope, Auth) {
-  $scope.logout = Auth.logout;
+.controller("WelcomeCtrl", function($rootScope, $scope, UserAuth, $location) {
+    $scope.logout = UserAuth.logout;
+    test = $rootScope.afUser;
+    console.log($rootScope.activeUser);
+    console.log($rootScope.fbUser);
+    console.log(test);
+    $scope.$apply();
 });

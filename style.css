@@ -15,4 +15,8 @@
 }
 .auth-container h2 {
   margin-top: 0;
+  clear: both;
+}
+body {
+  padding-top: 70px;
 }
