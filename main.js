@@ -64,7 +64,6 @@ app
   UserAuth.logout = function() {
     $rootScope.afAuth.$unauth();
   };
-  // Auth.currnetUser = {};
   return UserAuth;
 })
 .controller("LoggedInUser", function($rootScope, $firebaseObject) {
@@ -72,12 +71,9 @@ app
     if (authData) {
       console.log(authData);
       $rootScope.activeUser = authData;
-      $rootScope.fbRef.child("users").child($rootScope.activeUser.uid).once("value", function(snapshot) {
-        $rootScope.fbUser = snapshot.val();
-        console.log($rootScope.fbUser);
-      });
-      $rootScope.afUser = $firebaseObject($rootScope.fbRef.child("users").child($rootScope.activeUser.uid));
-      console.log($rootScope.afUser);
+      var userRef = $rootScope.fbRef.child("users").child($rootScope.activeUser.uid);
+      var userFBObj = $firebaseObject(userRef);
+      userFBObj.$bindTo($rootScope, "currentUser");
     }
   });
 })
@@ -93,10 +89,9 @@ app
   };
 })
 .controller("WelcomeCtrl", function($rootScope, $scope, UserAuth, $location) {
+  if ($rootScope.currentUser) {
     $scope.logout = UserAuth.logout;
-    test = $rootScope.afUser;
-    console.log($rootScope.activeUser);
-    console.log($rootScope.fbUser);
-    console.log(test);
-    $scope.$apply();
+  } else {
+    $location.path("/")
+  }
 });
