@@ -11,6 +11,8 @@ app.factory("UserAuth", function($rootScope, $location, $firebaseObject) {
         $rootScope.fbRef.child("users").child(data.uid).set({
           fullName: user.fullName,
           username: user.username,
+          dateCreated: Firebase.ServerValue.TIMESTAMP,
+          gravatar: CryptoJS.MD5(user.email.trim()).toString(CryptoJS.enc.Hex),
           email: user.email
         });
         return true;
@@ -19,7 +21,7 @@ app.factory("UserAuth", function($rootScope, $location, $firebaseObject) {
     })
     .then(function(newUserRegistered) {
       if (newUserRegistered) {
-        Auth.login(user);
+        UserAuth.login(user);
       }
     })
     .catch(function(error) {
