@@ -4,7 +4,6 @@ app
 .factory("UserAuth", function($rootScope, $location, $firebaseObject) {
   function UserAuth(){
   }
-
   UserAuth.register = function(user) {
     return $rootScope.afAuth.$createUser({
       email: user.email,
