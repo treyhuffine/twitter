@@ -1,25 +1,6 @@
 var app = angular.module("lyve", ["ngRoute", "firebase"]);
 
 app
-.constant("fbUrl", "https://lyve.firebaseio.com/")
-.run(function($rootScope, $firebaseAuth, $window, fbUrl) {
-  $rootScope.fbRef = new $window.Firebase(fbUrl);
-  $rootScope.afAuth = $firebaseAuth($rootScope.fbRef);
-})
-.config(function($routeProvider) {
-  $routeProvider
-    .when("/", {
-      controller: "MainCtrl",
-      templateUrl: "main.html"
-    })
-    .when("/welcome", {
-      controller: "WelcomeCtrl",
-      templateUrl: "welcome.html"
-    })
-    .otherwise({
-      redirectTo: "/"
-    });
-})
 .factory("UserAuth", function($rootScope, $location, $firebaseObject) {
   function UserAuth(){
   }
@@ -85,7 +66,7 @@ app
 .controller("LoggedInUser", function($rootScope, $firebaseObject, UserAuth) {
   UserAuth.setUser();
 })
-.controller("MainCtrl", function($scope, $rootScope, $location, UserAuth) {
+.controller("AuthCtrl", function($scope, $rootScope, $location, UserAuth) {
   if ($rootScope.authData) {
     $location.path("/welcome");
   }
