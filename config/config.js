@@ -18,6 +18,15 @@ app.config(function($routeProvider) {
         }]
       }
     })
+    .when("/stream", {
+      controller: "StreamCtrl",
+      templateUrl: "views/stream.html",
+      resolve: {
+        "currentAuth": ["UserAuth", function(UserAuth) {
+          return UserAuth.checkAuth().$requireAuth();
+        }]
+      }
+    })
     .when("/list", {
       controller: "UserListCtrl",
       templateUrl: "views/list.html"

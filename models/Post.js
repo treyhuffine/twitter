@@ -11,11 +11,7 @@ app.factory("Post", function($rootScope, $firebaseArray, $firebaseObject) {
         postComposerUserName: $rootScope.currentUser.username,
         postComposerId: $rootScope.userToken.uid,
         postComposerFullName: $rootScope.currentUser.fullName,
-        postComposerGravatar: $rootScope.currentUser.gravatar,
-        favorites: null,
-        retweets: null,
-        hashtags: null,
-        userMentions: null
+        postComposerGravatar: $rootScope.currentUser.gravatar
       });
   };
   Post.showCurrentUserPosts = function() {
