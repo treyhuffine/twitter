@@ -1,9 +1,13 @@
 app.config(function($routeProvider) {
-  console.log("config");
   $routeProvider
     .when("/", {
       controller: "ProfileCtrl",
-      templateUrl: "views/profile.html"
+      templateUrl: "views/profile.html",
+      resolve: {
+        "currentAuth": ["UserAuth", function(UserAuth) {
+          return UserAuth.checkAuth().$waitForAuth();
+        }]
+      }
     })
     .when("/login", {
       controller: "AuthCtrl",

@@ -21,12 +21,11 @@ app.factory("Post", function($rootScope, $firebaseArray, $firebaseObject) {
       });
   };
   Post.showCurrentUserPosts = function() {
-    var postRef = $rootScope.fbRef.child("posts");
-    var query = postRef.orderByChild("postComposerId").equalTo($rootScope.userToken.uid);
-    console.log(postRef);
-    console.log(query);
-    console.log($firebaseArray(postRef));
-    return $firebaseArray(query);
+    if ($rootScope.userToken) {
+      var postRef = $rootScope.fbRef.child("posts");
+      var query = postRef.orderByChild("postComposerId").equalTo($rootScope.userToken.uid);
+      return $firebaseArray(query);
+    }
   };
 
   return Post;
