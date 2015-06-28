@@ -39,6 +39,8 @@ body, html{
 .post-text {
   resize: none;
   width: 100%;
+  margin-top: 10px;
+  height: 100px;
 }
 .post-gravatar {
   width: 40px;
@@ -54,6 +56,7 @@ body, html{
   border-radius: 8px;
   border: 2px solid rgb(71, 112, 150);
   padding-bottom: 20px;
+  margin-left: 20px;
 }
 .post-container p {
   margin-top: 0;
@@ -74,4 +77,15 @@ body, html{
 .post-timestamp {
   margin-left: 5px;
   font-size: .8em;
+}
+.profile-un {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 5px;
+  font-size: 1.3em;
+}
+.profile-fn {
+  margin-left: 5px;
+  margin-top: 0;
+  color: rgb(116, 116, 116);
 }

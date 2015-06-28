@@ -1,10 +1,12 @@
 <div class="row">
   <aside class="col-sm-offset-1 col-sm-3 user-container">
     <img ng-src="http://www.gravatar.com/avatar/{{currentUser.gravatar}}"
-         alt="Description" class="current-user-gravatar"/>
-    <div class="user-info">
-      {{currentUser.username}}
-    </div>
+         alt="Description" class="current-user-gravatar pull-left"/>
+    <span class="user-info">
+      <h4 class="pull-left profile-un">{{currentUser.fullName}}</h4>
+      <br>
+      <h4 class="pull-left profile-fn">{{currentUser.username}}</h4>
+    </span>
     <div class="tweet-container">
       <form class="new-post" ng-submit="submitPost()">
         <textarea class="post-text" ng-model="postText" required></textarea>
@@ -13,9 +15,9 @@
       </form>
     </div>
   </aside>
-  <div class="col-sm-offset-1 col-sm-6 post-container">
+  <div class="col-sm-6 post-container">
     <h3>Posts:</h3>
-    <div class="user-post" ng-repeat="post in currentUserPosts">
+    <div class="user-post" ng-repeat="post in currentUserPosts | orderBy : 'dateCreated' : true">
       <span class="pull-left"><img ng-src="http://www.gravatar.com/avatar/{{post.postComposerGravatar}}"
         alt="Description" class="post-gravatar"/></span>
       <span class="post-content-container">
