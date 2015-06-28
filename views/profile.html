@@ -1,6 +1,7 @@
 <div class="row">
   <aside class="col-sm-offset-1 col-sm-3 user-container">
-    <img ng-src="http://www.gravatar.com/avatar/{{currentUser.gravatar}}" alt="Description" class="gravatar"/>
+    <img ng-src="http://www.gravatar.com/avatar/{{currentUser.gravatar}}"
+         alt="Description" class="current-user-gravatar"/>
     <div class="user-info">
       {{currentUser.username}}
     </div>
@@ -12,7 +13,19 @@
       </form>
     </div>
   </aside>
-  <div class="col-sm-offset-1 col-sm-6">
-    {{currentUserPosts}}
+  <div class="col-sm-offset-1 col-sm-6 post-container">
+    <h3>Posts:</h3>
+    <div class="user-post" ng-repeat="post in currentUserPosts">
+      <span class="pull-left"><img ng-src="http://www.gravatar.com/avatar/{{post.postComposerGravatar}}"
+        alt="Description" class="post-gravatar"/></span>
+      <span class="post-content-container">
+        <span class="pull-left post-un"><p>{{post.postComposerUserName}}</p></span>
+        <span class="pull-left post-fn"><p>( {{post.postComposerFullName}} )</p></span>
+        <br>
+        <p class="post-timestamp pull-left">{{(post.dateCreated | date:'MMM yy, h:mma')}}</p>
+        <br>
+        <p class="post-content pull-left">{{post.content}}</p>
+      </span>
+    </div>
   </div>
 </div>

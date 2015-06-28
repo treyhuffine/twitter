@@ -12,8 +12,10 @@ app.factory("Post", function($rootScope, $firebaseArray, $firebaseObject) {
       postArray.$add({
         content: newPost,
         dateCreated: Firebase.ServerValue.TIMESTAMP,
-        postComposerName: $rootScope.currentUser.username,
+        postComposerUserName: $rootScope.currentUser.username,
         postComposerId: $rootScope.userToken.uid,
+        postComposerFullName: $rootScope.currentUser.fullName,
+        postComposerGravatar: $rootScope.currentUser.gravatar,
         favorites: null,
         retweets: null,
         hashtags: null,

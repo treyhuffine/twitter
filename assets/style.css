@@ -33,9 +33,42 @@ body, html{
   background-color: white;
   border-radius: 10px;
   padding-bottom: 10px;
-  padding-top: 5px;
+  padding-top: 10px;
+  border: 1px solid rgb(71, 112, 150);
 }
 .post-text {
   resize: none;
   width: 100%;
+}
+.post-gravatar {
+  width: 40px;
+}
+.user-post {
+  background-color: white;
+  border-top: 1px solid rgb(208, 207, 207);
+  padding: 10px;
+  overflow: auto;
+}
+.post-container {
+  background-color: white;
+  border-radius: 8px;
+  border: 2px solid rgb(71, 112, 150);
+  padding-bottom: 20px;
+}
+.post-container p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.post-un, .post-fn {
+  margin-left: 5px;
+}
+.post-fn {
+  color: gray;
+}
+.post-content {
+  margin-top: 5px !important;
+  font-size: 1.3em;
+}
+.post-timestamp {
+  margin-left: 5px;
 }
