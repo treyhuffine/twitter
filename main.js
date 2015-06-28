@@ -13,4 +13,7 @@ app
   $scope.submitPost = function() {
     Post.composePost($scope.postText);
   };
+  var test = Post.showCurrentUserPosts();
+  console.log(test);
+  // test.$bindTo($scope, "currentUserPosts");
 });

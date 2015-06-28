@@ -47,13 +47,15 @@ app.factory("UserAuth", function($rootScope, $location, $firebaseObject) {
   UserAuth.setUser = function() {
     $rootScope.afAuth.$onAuth(function(authData) {
       if (authData) {
-        console.log(authData);
         $rootScope.userToken = authData;
         var userRef = $rootScope.fbRef.child("users").child($rootScope.userToken.uid);
         var userFBObj = $firebaseObject(userRef);
         userFBObj.$bindTo($rootScope, "currentUser");
       }
     });
+  };
+  UserAuth.checkAuth = function() {
+    return $rootScope.afAuth;
   };
 
   return UserAuth;
