@@ -1,9 +1,12 @@
 var app = angular.module("lyve", ["ngRoute", "firebase"]);
 
 app
-.controller("UserMaster", function($rootScope, $firebaseObject, UserAuth, Post) {
+.controller("UserMaster", function($rootScope, $firebaseObject, UserAuth, Post, $location) {
   UserAuth.setUser();
-  $rootScope.logout = UserAuth.logout;
+  $rootScope.logout = function() {
+    UserAuth.logout();
+    $location.path("/login");
+  };
 })
 .controller("ProfileCtrl", function($rootScope, $scope, $timeout, UserAuth, $location, Post) {
   if (!$rootScope.userToken) {

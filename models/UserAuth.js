@@ -42,7 +42,6 @@ app.factory("UserAuth", function($rootScope, $location, $firebaseObject) {
   };
   UserAuth.logout = function() {
     $rootScope.afAuth.$unauth();
-    $location.path("/login");
   };
   UserAuth.setUser = function() {
     $rootScope.afAuth.$onAuth(function(authData) {

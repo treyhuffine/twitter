@@ -11,7 +11,12 @@ app.config(function($routeProvider) {
     })
     .when("/login", {
       controller: "AuthCtrl",
-      templateUrl: "views/auth.html"
+      templateUrl: "views/auth.html",
+      resolve: {
+        "currentAuth": ["UserAuth", function(UserAuth) {
+          return UserAuth.checkAuth().$waitForAuth();
+        }]
+      }
     })
     .otherwise({
       redirectTo: "/login"
