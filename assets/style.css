@@ -94,4 +94,32 @@ body, html{
   font-family: Monaco;
   cursor: pointer;
 }
-.red { color: red };
+.red {
+  color: red;
+}
+div#user-list-container {
+    border-radius: 8px;
+    border: 2px solid rgb(71, 112, 150);
+    padding-bottom: 0px;
+    margin-left: 20px;
+    overflow: auto;
+    background-color: white;
+}
+.listed-user {
+  background-color: white;
+  background-color: white;
+  border-top: 1px solid rgb(208, 207, 207);
+  padding: 10px;
+  overflow: auto;
+}
+.clear-top-bot {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.follow-info {
+  margin-left: 5px;
+  overflow: auto;
+}
+.user-list {
+  margin-left: 10px;
+}

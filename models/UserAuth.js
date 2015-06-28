@@ -1,4 +1,4 @@
-app.factory("UserAuth", function($rootScope, $location, $firebaseObject) {
+app.factory("UserAuth", function($rootScope, $location, $firebaseObject, $firebaseArray) {
   function UserAuth(){
   }
   UserAuth.register = function(user) {
@@ -60,7 +60,7 @@ app.factory("UserAuth", function($rootScope, $location, $firebaseObject) {
     return $rootScope.afAuth;
   };
   UserAuth.userList = function() {
-    return $firebaseObject($rootScope.fbRef.child("users"));
+    return $firebaseArray($rootScope.fbRef.child("users"));
   };
 
   return UserAuth;
