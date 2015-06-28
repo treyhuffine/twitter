@@ -18,6 +18,10 @@ app.config(function($routeProvider) {
         }]
       }
     })
+    .when("/list", {
+      controller: "UserListCtrl",
+      templateUrl: "views/list.html"
+    })
     .otherwise({
       redirectTo: "/login"
     });

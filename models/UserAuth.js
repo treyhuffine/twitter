@@ -59,6 +59,9 @@ app.factory("UserAuth", function($rootScope, $location, $firebaseObject) {
   UserAuth.checkAuth = function() {
     return $rootScope.afAuth;
   };
+  UserAuth.userList = function() {
+    return $firebaseObject($rootScope.fbRef.child("users"));
+  };
 
   return UserAuth;
 });
