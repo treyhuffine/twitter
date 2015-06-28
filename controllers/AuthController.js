@@ -1,6 +1,7 @@
 app.controller("AuthCtrl", function($scope, $rootScope, $location, UserAuth) {
   if ($rootScope.userToken) {
-    $location.path("/");
+    console.log($rootScope.currentUser.username);
+    $location.path("/user/" + $rootScope.currentUser.username);
   }
   var tempLogin;
   $scope.registerUser = function() {

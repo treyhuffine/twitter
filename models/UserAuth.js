@@ -43,13 +43,19 @@ app.factory("UserAuth", function($rootScope, $location, $firebaseObject) {
   UserAuth.logout = function() {
     $rootScope.afAuth.$unauth();
   };
+  UserAuth.setRoute = function() {
+
+  };
   UserAuth.setUser = function() {
-    $rootScope.afAuth.$onAuth(function(authData) {
+    var $checkAuth = $rootScope.afAuth.$onAuth(function(authData) {
       if (authData) {
         $rootScope.userToken = authData;
         var userRef = $rootScope.fbRef.child("users").child($rootScope.userToken.uid);
         var userFBObj = $firebaseObject(userRef);
         userFBObj.$bindTo($rootScope, "currentUser");
+        return true;
+      } else {
+        return false;
       }
     });
   };
