@@ -11,7 +11,7 @@
   overflow: auto;
   margin-top: 20px;
   padding-bottom: 80px;
-  padding-top: 80px
+  padding-top: 50px
 }
 .auth-container h2 {
   margin-top: 0;
@@ -122,4 +122,15 @@ div#user-list-container {
 }
 .user-list {
   margin-left: 10px;
+}
+.navbar-nav li:hover {
+  background-color: rgb(214, 214, 214);
+}
+.login-logo {
+  font-family: Monaco;
+  text-align: center;
+  color: rgb(62, 94, 132) !important;
+  margin-top: 0;
+  margin-bottom: 40px;
+  font-size: 4em;
 }
