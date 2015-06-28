@@ -5,7 +5,7 @@ app.config(function($routeProvider) {
       templateUrl: "views/profile.html",
       resolve: {
         "currentAuth": ["UserAuth", function(UserAuth) {
-          return UserAuth.checkAuth().$waitForAuth();
+          return UserAuth.checkAuth().$requireAuth();
         }]
       }
     })

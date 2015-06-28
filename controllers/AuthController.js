@@ -1,4 +1,4 @@
-app.controller("AuthCtrl", function($scope, $rootScope, $location, UserAuth) {
+app.controller("AuthCtrl", function($scope, $rootScope, $location, UserAuth, currentAuth) {
   var tempLogin;
   $scope.registerUser = function() {
     tempLogin = $scope.newUser;

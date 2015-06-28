@@ -26,7 +26,6 @@ app.controller("UserListCtrl", function($scope, $rootScope, $location, UserAuth)
   };
   $scope.isFollowing = function(listedUser) {
     var following = false;
-    console.log($rootScope.currentUser.following);
     if ($rootScope.currentUser.following) {
       for (var k in $rootScope.currentUser.following) {
         if ($rootScope.currentUser.following[k].email === listedUser.email) {

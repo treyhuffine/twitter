@@ -41,6 +41,7 @@ app.factory("UserAuth", function($rootScope, $location, $firebaseObject, $fireba
     });
   };
   UserAuth.logout = function() {
+    $rootScope.userToken = null;
     $rootScope.afAuth.$unauth();
   };
   UserAuth.setUser = function() {
