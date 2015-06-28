@@ -1,6 +1,5 @@
 app.controller("UserListCtrl", function($scope, $rootScope, $location, UserAuth) {
   $scope.allUsers = UserAuth.userList();
-  console.log($scope.allUsers);
   $scope.follow = function(clickedUser, idx) {
     clickedUser.followers = clickedUser.followers || [];
     clickedUser.followers.push($rootScope.currentUser);
@@ -18,21 +17,22 @@ app.controller("UserListCtrl", function($scope, $rootScope, $location, UserAuth)
     });
     delete clickedUser.followers[deleteFollower];
     $scope.allUsers.$save(idx);
-    $rootScope.currentUser.following.forEach(function(e, i) {
-      if (e.email === clickedUser.email) {
-        deleteFollowing = i;
+    for (var k in $rootScope.currentUser.following) {
+      if ($rootScope.currentUser.following[k].email === clickedUser.email) {
+        deleteFollowing = k;
       }
-    });
+    }
     delete $rootScope.currentUser.following[deleteFollowing];
   };
   $scope.isFollowing = function(listedUser) {
     var following = false;
+    console.log($rootScope.currentUser.following);
     if ($rootScope.currentUser.following) {
-      $rootScope.currentUser.following.forEach(function(e, i) {
-        if (e.email === listedUser.email) {
+      for (var k in $rootScope.currentUser.following) {
+        if ($rootScope.currentUser.following[k].email === listedUser.email) {
           following = true;
         }
-      });
+      }
     }
     return following;
   };
