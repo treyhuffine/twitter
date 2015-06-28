@@ -9,9 +9,12 @@
     </span>
     <div class="tweet-container">
       <form class="new-post" ng-submit="submitPost()">
-        <textarea class="post-text" ng-model="postText" required></textarea>
+        <textarea class="post-text" ng-model="postText" maxlength="500"
+                  placeholder="Send lyve updates to the world..." required></textarea>
         <br>
-        <button class="btn btn-primary" name="go-lyve">Go Lyve</button>
+        <button class="btn btn-primary" name="go-lyve"
+                ng-disabled="isPostMaxed()">Go Lyve</button>
+        <span ng-class="{ red: isPostMaxed() }">{{remainingCharacters()}}</span>
       </form>
     </div>
   </aside>

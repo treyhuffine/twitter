@@ -1,10 +1,7 @@
 app.factory("Post", function($rootScope, $firebaseArray, $firebaseObject) {
   function Post() {
   }
-  // Post.setRef = function() {
-  //   var postRef = $rootScope.fbReb.child("Posts");
-  //   return postArray = $firebaseArray(postRef);
-  // };
+
   Post.composePost = function(newPost) {
       var postRef = $rootScope.fbRef.child("posts");
       var postArray = $firebaseArray(postRef);

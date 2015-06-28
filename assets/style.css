@@ -89,3 +89,8 @@ body, html{
   margin-top: 0;
   color: rgb(116, 116, 116);
 }
+.nav-logo {
+  color: rgb(62, 94, 132) !important;
+  font-family: Monaco;
+}
+.red { color: red };
