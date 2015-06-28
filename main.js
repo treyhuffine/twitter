@@ -9,5 +9,5 @@ app
   };
   $rootScope.goHome = function() {
     $location.path("/");
-  }
+  };
 });
