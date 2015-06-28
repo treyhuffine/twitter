@@ -5,7 +5,6 @@ app.factory("Post", function($rootScope, $firebaseArray, $firebaseObject) {
   Post.composePost = function(newPost) {
       var postRef = $rootScope.fbRef.child("posts");
       var postArray = $firebaseArray(postRef);
-      console.log(newPost);
       postArray.$add({
         content: newPost,
         dateCreated: Firebase.ServerValue.TIMESTAMP,

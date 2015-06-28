@@ -3,9 +3,9 @@
   <div class="container-fluid">
     <div class="row">
       <div class="navbar-header">
-        <a class="navbar-brand nav-logo">lyve</a>
+        <a class="navbar-brand nav-logo" ng-click="goHome()">lyve</a>
       </div>
-      <div ng-show="currentUser">
+      <div ng-show="userToken">
         <ul class="nav navbar-nav pull-right">
           <li class="dropdown">
             <a href="" class="dropdown-toggle" data-toggle="dropdown"
@@ -13,7 +13,7 @@
               {{currentUser.username}} <span class="caret"></span></a>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="">Profile</a></li>
+              <li><a href="" ng-click="goHome()">Profile</a></li>
               <li ng-click="logout()"><a href="">Logout</a></li>
             </ul>
           </li>

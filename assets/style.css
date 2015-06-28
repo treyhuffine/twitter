@@ -92,5 +92,6 @@ body, html{
 .nav-logo {
   color: rgb(62, 94, 132) !important;
   font-family: Monaco;
+  cursor: pointer;
 }
 .red { color: red };
