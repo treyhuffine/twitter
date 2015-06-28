@@ -1,7 +1,7 @@
 app.controller("ProfileCtrl", function($rootScope, $scope, $timeout, UserAuth, $location, Post) {
-  if (!$rootScope.userToken) {
-    $location.path("/login");
-  }
+  // if (!$rootScope.userToken) {
+  //   $location.path("/login");
+  // }
   var postCharacterLimit = 365;
   $scope.postText = "";
   $scope.submitPost = function() {
