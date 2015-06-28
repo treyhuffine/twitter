@@ -9,8 +9,21 @@ app.controller("UserListCtrl", function($scope, $rootScope, $location, UserAuth)
     $rootScope.currentUser.following.push(clickedUser);
   };
   $scope.unfollow = function(clickedUser, idx) {
-    console.log(clickedUser);
-    
+    var deleteFollower = null,
+        deleteFollowing = null;
+    clickedUser.followers.forEach(function(e, i) {
+      if (e.email === $rootScope.currentUser.email) {
+        deleteFollower = i;
+      }
+    });
+    delete clickedUser.followers[deleteFollower];
+    $scope.allUsers.$save(idx);
+    $rootScope.currentUser.following.forEach(function(e, i) {
+      if (e.email === clickedUser.email) {
+        deleteFollowing = i;
+      }
+    });
+    delete $rootScope.currentUser.following[deleteFollowing];
   };
   $scope.isFollowing = function(listedUser) {
     var following = false;
