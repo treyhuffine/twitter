@@ -20,9 +20,9 @@
         alt="Description" class="post-gravatar"/></span>
       <span class="post-content-container">
         <span class="pull-left post-un"><p>{{post.postComposerUserName}}</p></span>
-        <span class="pull-left post-fn"><p>( {{post.postComposerFullName}} )</p></span>
+        <span class="pull-left post-fn"><p> @{{post.postComposerFullName}}</p></span>
         <br>
-        <p class="post-timestamp pull-left">{{(post.dateCreated | date:'MMM yy, h:mma')}}</p>
+        <p class="post-timestamp pull-left">{{(post.dateCreated | date:'MMM d')}}</p>
         <br>
         <p class="post-content pull-left">{{post.content}}</p>
       </span>

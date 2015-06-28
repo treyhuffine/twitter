@@ -64,6 +64,8 @@ body, html{
 }
 .post-fn {
   color: gray;
+  font-size: .8em;
+  margin-top: 2px;
 }
 .post-content {
   margin-top: 5px !important;
@@ -71,4 +73,5 @@ body, html{
 }
 .post-timestamp {
   margin-left: 5px;
+  font-size: .8em;
 }
