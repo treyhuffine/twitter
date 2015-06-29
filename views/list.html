@@ -3,12 +3,14 @@
     <div class="user-list-container" id="user-list-container">
       <h3 class="user-list">User List - Follow someone new!</h3>
       <div class="listed-user" ng-repeat="user in allUsers track by $index">
-        <button class="btn btn-sm btn-success pull-right"
-                ng-click="follow(user, $index)"
-                ng-hide="isFollowing(user)">Follow</button>
-        <button class="btn btn-sm btn-default pull-right"
-                ng-click="unfollow(user, $index)"
-                ng-show="isFollowing(user)">Unfollow</button>
+        <div class="buttons" ng-hide="isCurrentUser(user)">
+          <button class="btn btn-sm btn-success pull-right"
+                  ng-click="follow(user, $index)"
+                  ng-hide="isFollowing(user)">Follow</button>
+          <button class="btn btn-sm btn-default pull-right"
+                  ng-click="unfollow(user, $index)"
+                  ng-show="isFollowing(user)">Unfollow</button>
+        </div>
         <span class="pull-left"><img ng-src="http://www.gravatar.com/avatar/{{user.gravatar}}"
           alt="Description" class="post-gravatar"/></span>
         <span class="follow-info pull-left"><p class="clear-top-bot">{{user.fullName}}</p></span>

@@ -35,4 +35,13 @@ app.controller("UserListCtrl", function($scope, $rootScope, $location, UserAuth)
     }
     return following;
   };
+  $scope.isCurrentUser = function(listedUser) {
+    var isUser = false;
+    if ($rootScope.currentUser) {
+      if ($rootScope.currentUser.email === listedUser.email) {
+        isUser = true;
+      }
+    }
+    return isUser;
+  };
 });
