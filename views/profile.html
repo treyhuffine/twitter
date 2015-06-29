@@ -5,7 +5,13 @@
     <span class="user-info">
       <h4 class="pull-left profile-un">{{currentUser.fullName}}</h4>
       <br>
-      <h4 class="pull-left profile-fn">{{currentUser.username}}</h4>
+      <h4 class="pull-left profile-fn clear-top-bot">{{currentUser.username}}</h4>
+      <br>
+      <h5 class="pull-left clear-top-bot followers">Followers</h5>
+      <h5 class="pull-left clear-top-bot following">Following</h5>
+      <br>
+      <h5 class="pull-left clear-top-bot follower-count">({{getFollowersCount()}})</h5>
+      <h5 class="pull-left clear-top-bot following-count">({{getFollowingCount()}})</h5>
     </span>
     <div class="tweet-container">
       <form class="new-post" ng-submit="submitPost()">

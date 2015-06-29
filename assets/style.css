@@ -137,3 +137,15 @@ div#user-list-container {
 .stream-container {
   margin-left: 25%;
 }
+.followers {
+  margin-left: 5px;
+}
+.following {
+  margin-left: 10px;
+}
+.follower-count {
+  margin-left: 27px;
+}
+.following-count {
+  margin-left: 58px;
+}
