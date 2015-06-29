@@ -1,8 +1,7 @@
 <div class="row">
   <div class="col-sm-6 stream-container post-container">
-    <h3>Stream:</h3>
-    <div class="user-post" ng-repeat="post in postArray | orderBy : 'dateCreated' : true"
-         ng-show="isFollowing()">
+    <h3>Following Stream:</h3>
+    <div class="user-post" ng-repeat="post in postArray | orderBy : 'dateCreated' : true" ng-if="isFollowing(post)">
       <span class="pull-left"><img ng-src="http://www.gravatar.com/avatar/{{post.postComposerGravatar}}"
         alt="Description" class="post-gravatar"/></span>
       <span class="post-content-container">

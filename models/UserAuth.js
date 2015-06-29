@@ -6,9 +6,11 @@ app.factory("UserAuth", function($rootScope, $location, $firebaseObject, $fireba
       email: user.email,
       password: user.password
     })
-    .then(function(data) {
-      if (data.uid) {
-        $rootScope.fbRef.child("users").child(data.uid).set({
+    .then(function(currentData) {
+      var newData;
+      newData = currentData;
+      if (newData.uid) {
+        $rootScope.fbRef.child("users").child(newData.uid).set({
           fullName: user.fullName,
           username: user.username,
           dateCreated: Firebase.ServerValue.TIMESTAMP,
@@ -41,7 +43,7 @@ app.factory("UserAuth", function($rootScope, $location, $firebaseObject, $fireba
     });
   };
   UserAuth.logout = function() {
-    $rootScope.userToken = null;
+    // Must destroy 3-way binding here
     $rootScope.afAuth.$unauth();
   };
   UserAuth.setUser = function() {
@@ -49,8 +51,8 @@ app.factory("UserAuth", function($rootScope, $location, $firebaseObject, $fireba
       if (authData) {
         $rootScope.userToken = authData;
         var userRef = $rootScope.fbRef.child("users").child($rootScope.userToken.uid);
-        $rootScope.userFBObj = $firebaseObject(userRef);
-        $rootScope.userFBObj.$bindTo($rootScope, "currentUser");
+        var thisuserFBObj = $firebaseObject(userRef);
+        thisuserFBObj.$bindTo($rootScope, "currentUser");
         return true;
       } else {
         return false;
