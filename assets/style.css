@@ -134,3 +134,6 @@ div#user-list-container {
   margin-bottom: 40px;
   font-size: 4em;
 }
+.stream-container {
+  margin-left: 25%;
+}

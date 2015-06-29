@@ -1,3 +1,18 @@
 <div class="row">
-  {{postArray}}
+  <div class="col-sm-6 stream-container post-container">
+    <h3>Stream:</h3>
+    <div class="user-post" ng-repeat="post in postArray | orderBy : 'dateCreated' : true"
+         ng-show="isFollowing()">
+      <span class="pull-left"><img ng-src="http://www.gravatar.com/avatar/{{post.postComposerGravatar}}"
+        alt="Description" class="post-gravatar"/></span>
+      <span class="post-content-container">
+        <span class="pull-left post-un"><p>{{post.postComposerUserName}}</p></span>
+        <span class="pull-left post-fn"><p> @{{post.postComposerFullName}}</p></span>
+        <br>
+        <p class="post-timestamp pull-left">{{(post.dateCreated | date:'MMM d')}}</p>
+        <br>
+        <p class="post-content pull-left">{{post.content}}</p>
+      </span>
+    </div>
+  </div>
 </div>
