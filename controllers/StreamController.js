@@ -14,7 +14,7 @@ app.controller("StreamCtrl", function($scope, $rootScope, $location, UserAuth, c
           }
         }
       }
+      return isFollowing;
     }
-    return isFollowing;
   };
 });
